@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>Match History</h1>
+    <a href="{{ url_for('add_match') }}">Log New Match</a>
+
+    {% if matches %}
+        {% for match in matches %}
+        <div>
+            <p>Agent: {{ match.agent }}</p><br>
+            <p>Score: {{ match.my_team_score }} - {{ match.enemy_team_score }}</p><br>
+            <p>Stats: {{ '%s/%s/%s'| format(match.kills, match.deaths, match.assists ) }}</p><br>
+            {% if match.result %}<p>Result: Win</p>
+            {% else %}<p>Result: Lose</p>
+            {% endif %}
+        </div>
+        {% endfor %}
+    {% else %}
+        <p>No matches logged yet.</p>
+    {% endif %}
+    
+{% endblock %}

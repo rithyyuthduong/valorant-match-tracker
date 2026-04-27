@@ -22,4 +22,4 @@ class Match(db.Model):
     rank_before: so.Mapped[str] = so.mapped_column(sa.String(28), index=True)
     
     def __repr__(self):
-        return '<Match {}>'.form(self.agent, self.result)
+         return '<Match {} - {}>'.format(self.agent, self.result)
