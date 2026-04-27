@@ -1,0 +1,88 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>Add Match</h1>
+    <form action="" method="post">
+      {{ form.hidden_tag() }}
+      <p>
+        {{ form.agent.label }}<br>
+        {{ form.agent(size=16) }}
+        {% for error in form.agent.errors %}
+        <span style="color: red;">[{{ error }}]</span>
+        {% endfor %}
+      </p>
+      <p>
+        {{ form.my_team_score.label }}<br>
+        {{ form.my_team_score(size=8) }}
+        {% for error in form.my_team_score.errors %}
+        <span style="color: red;">[{{ error }}]</span>
+        {% endfor %}
+      </p>
+      <p>
+        {{ form.enemy_team_score.label }}<br>
+        {{ form.enemy_team_score(size=8) }}
+        {% for error in form.enemy_team_score.errors %}
+        <span style="color: red;">[{{ error }}]</span>
+        {% endfor %}
+      </p>
+      <p>
+        {{ form.map.label }}<br>
+        {{ form.map(size=8) }}
+        {% for error in form.map.errors %}
+        <span style="color: red;">[{{ error }}]</span>
+        {% endfor %}
+      </p>
+      <p>
+        {{ form.kills.label }}<br>
+        {{ form.kills(size=8) }}
+        {% for error in form.kills.errors %}
+        <span style="color: red;">[{{ error }}]</span>
+        {% endfor %}
+      </p>
+      <p>
+        {{ form.deaths.label }}<br>
+        {{ form.deaths(size=8) }}
+        {% for error in form.deaths.errors %}
+        <span style="color: red;">[{{ error }}]</span>
+        {% endfor %}
+      </p>
+      <p>
+        {{ form.assists.label }}<br>
+        {{ form.assists(size=8) }}
+        {% for error in form.assists.errors %}
+        <span style="color: red;">[{{ error }}]</span>
+        {% endfor %}
+      </p>
+      <p>
+        {{ form.result.label }}<br>
+        {{ form.result(size=16) }}
+        {% for error in form.result.errors %}
+        <span style="color: red;">[{{ error }}]</span>
+        {% endfor %}
+      </p>
+      <p>
+        {{ form.rank_before.label }}<br>
+        {{ form.rank_before(size=8) }}
+        {% for error in form.rank_before.errors %}
+        <span style="color: red;">[{{ error }}]</span>
+        {% endfor %}
+      </p>
+      <p>
+        {{ form.rank_after.label }}<br>
+        {{ form.rank_after(size=8) }}
+        {% for error in form.rank_after.errors %}
+        <span style="color: red;">[{{ error }}]</span>
+        {% endfor %}
+      </p>
+      <p>
+        {{ form.rr_change.label }}<br>
+        {{ form.rr_change(size=8) }}
+        {% for error in form.rr_change.errors %}
+        <span style="color: red;">[{{ error }}]</span>
+        {% endfor %}
+      </p>
+      <p>
+        {{ form.submit() }}
+      </p>
+    </form>
+{% endblock %}
