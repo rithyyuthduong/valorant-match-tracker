@@ -11,11 +11,13 @@
             <p>Map: {{ match.map }}</p> <br>
             <p>Score: {{ match.my_team_score }} - {{ match.enemy_team_score }}</p><br>
             <p>Stats: {{ '%s/%s/%s'| format(match.kills, match.deaths, match.assists ) }}</p><br>
-            <p>Rank: {{ match.rank_after }}</p><br>
-            {% if match.result %}<p>Result: Win</p>
+            <p>RR Change: {{ match.rr_change }}</p><br>
+            <p>Rank Before: {{ match.rank_before }}</p><br>
+            <p>Rank Now: {{ match.rank_after }}</p><br>
+            {% if match.result %}<p>Result: Win</p><br>
             {% else %}<p>Result: Lose</p><br>
             {% endif %}
-            <p>Date: {{ match.date_played }}</p>
+            <p>Date: {{ match.date_played.strftime('%d %b %Y %H:%M') }}</p>
         </div>
         {% endfor %}
     {% else %}
