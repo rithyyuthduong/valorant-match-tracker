@@ -8,7 +8,17 @@ from app.forms import MatchForm
 @app.route('/index', methods=['GET'])
 def index():
     matches = db.session.scalars(sa.select(Match)).all()
-    return render_template('index.html', title='Match History', matches=matches)
+    total_matches = len(matches)
+    wins = db.session.scalars(sa.select(Match).where(Match.result == True)).all()
+    if len(matches) > 0:
+        win_rate = (len(wins) / len(matches)) * 100
+    else:
+        win_rate = 0
+    total_kills = sum(match.kills for match in matches)
+    total_deaths = sum(match.deaths for match in matches)
+    total_assists = sum(match.assists for match in matches)
+    kda = (total_kills + total_assists) / total_deaths if total_deaths > 0 else 0 
+    return render_template('index.html', title='Match History', matches=matches, total_matches=total_matches, win_rate=win_rate, kda=kda)
         
 @app.route('/add_match', methods=['GET', 'POST'])
 def add_match():

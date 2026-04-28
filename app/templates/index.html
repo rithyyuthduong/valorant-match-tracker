@@ -2,6 +2,13 @@
 
 {% block content %}
     <h1>Match History</h1>
+        <div>
+            <p>Total Matches: {{ total_matches }}</p>
+            <p>Win Rate: {{ "%.1f" | format(win_rate) }}</p>
+            <p>KDA: {{ "%.2f" | format(kda) }}</p>
+        </div>
+    <hr>
+
     <a href="{{ url_for('add_match') }}">Log New Match</a>
     <hr>
     {% if matches %}
@@ -24,8 +31,8 @@
         <form action="{{ url_for('delete_match', id=match.id) }}" method="post">
             <input type="submit" value="Delete Match">
         </form>
-        {% endfor %}
         </div>
+        {% endfor %}
     {% else %}
         <p>No matches logged yet.</p>
     {% endif %}
