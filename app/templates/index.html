@@ -20,8 +20,12 @@
             {% else %}<p>Result: Lose</p><br>
             {% endif %}
             <p>Date: {{ match.date_played.strftime('%d %b %Y %H:%M') }}</p>
-        </div>
+        
+        <form action="{{ url_for('delete_match', id=match.id) }}" method="post">
+            <input type="submit" value="Delete Match">
+        </form>
         {% endfor %}
+        </div>
     {% else %}
         <p>No matches logged yet.</p>
     {% endif %}

@@ -32,3 +32,11 @@ def add_match():
         flash('Match logged successfully!')
         return redirect(url_for('index'))
     return render_template('add_match.html', title='Add Match', form=form)
+
+@app.route('/delete_match/<int:id>', methods=['POST'])
+def delete_match(id):
+    match = db.first_or_404(sa.select(Match).where(Match.id == id))
+    db.session.delete(match)
+    db.session.commit()
+    flash('Match Deleted')
+    return redirect(url_for('index'))
