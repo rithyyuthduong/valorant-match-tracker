@@ -11,7 +11,9 @@
             <p>Map: {{ match.map }}</p> <br>
             <p>Score: {{ match.my_team_score }} - {{ match.enemy_team_score }}</p><br>
             <p>Stats: {{ '%s/%s/%s'| format(match.kills, match.deaths, match.assists ) }}</p><br>
-            <p>RR Change: {{ match.rr_change }}</p><br>
+            {% if match.result %}<p>RR Change: +{{ match.rr_change }}</p><br>
+            {% else %}<p>RR Change: -{{ match.rr_change }}</p>
+            {% endif %}
             <p>Rank Before: {{ match.rank_before }}</p><br>
             <p>Rank Now: {{ match.rank_after }}</p><br>
             {% if match.result %}<p>Result: Win</p><br>
